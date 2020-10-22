@@ -1,6 +1,7 @@
 package com.crowdin.platform.example
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.crowdin.crowdin_controls.destroyCrowdinControl
@@ -27,5 +28,10 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onDestroy()
 //      Destroy crowdin overlay view.
         destroyCrowdinControl(this)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        com.crowdin.crowdin_controls.onActivityResult(this, requestCode)
     }
 }
